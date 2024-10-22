@@ -1,3 +1,16 @@
+# AgentForce Demo
+
+This app is based on the following tutorial.
+https://dzone.com/articles/building-your-own-ai-chatbot-with-react-and-chatgp
+
+To get the app running
+* install node
+* install two packages
+    npm install axios
+    npm install uuid
+* npm start
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
