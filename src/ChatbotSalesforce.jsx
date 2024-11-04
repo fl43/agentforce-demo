@@ -320,19 +320,15 @@ function ChatbotSalesforce() {
         <div style={chatbotStyles.chatbox}>
           <div style={chatbotStyles.messages}>
             {messages.map((message, index) => {
-              if (message.role === 'bot') {
-                return (
-                  <div style={chatbotStyles.botMessage} key={index}>
-                    {message.text}
-                  </div>
-                );
-              } else {
-                return (
-                  <div style={chatbotStyles.userMessage} key={index}>
-                    {message.text}
-                  </div>
-                );
-              }
+              return message.role === 'bot' ? (
+                <div style={chatbotStyles.botMessage} key={index}>
+                  {message.text}
+                </div>
+              ) : (
+                <div style={chatbotStyles.userMessage} key={index}>
+                  {message.text}
+                </div>
+              );
             })}
           </div>
           <div style={chatbotStyles.container}>
