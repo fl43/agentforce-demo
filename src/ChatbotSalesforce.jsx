@@ -219,45 +219,61 @@ function ChatbotSalesforce() {
 
   // Inside the Chatbot component
   const chatbotStyles = {
+    chatArea: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
+    },
     chatbot: {
-      width: '300px',
+      width: '70%',
       backgroundColor: '#f0f0f0',
       border: '1px solid #ccc',
       borderRadius: '5px',
       margin: '0 auto',
-      padding: '10px',
     },
     chatbox: {
+      padding: '10px',
       display: 'flex',
       flexDirection: 'column',
     },
     messages: {
-      maxHeight: '300px',
+      height: '450px',
       overflowY: 'scroll',
-    },
-    message: {
-      marginBottom: '10px',
+      display: 'flex',
+      flexDirection: 'column',
     },
     botMessage: {
       backgroundColor: '#007bff',
       color: 'white',
-      padding: '5px 10px',
+      padding: '8px 15px',
       borderRadius: '5px',
-      marginLeft: 'auto',
+      alignSelf: 'flex-start',
+      marginBottom: '10px',
+      maxWidth: '80%',
+      textAlign: 'left'
     },
     userMessage: {
-      backgroundColor: '#e0e0e0',
-      padding: '5px 10px',
+      backgroundColor: 'rgb(178, 178, 178)',
+      padding: '8px 15px',
       borderRadius: '5px',
-      marginRight: 'auto',
+      alignSelf: 'flex-end',
+      marginBottom: '10px',
+      maxWidth: '80%',
+      textAlign: 'left'
+    },
+    container: {
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: '10px',
     },
     input: {
-      width: '100%',
-      padding: '5px',
+      flex: 1,
+      padding: '10px',
       border: '1px solid #ccc',
       borderRadius: '5px',
-      marginBottom: '10px',
-    },
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      fontSize: '18px'
+      },
     button: {
       backgroundColor: '#007bff',
       color: 'white',
@@ -265,6 +281,9 @@ function ChatbotSalesforce() {
       padding: '10px 20px',
       borderRadius: '5px',
       cursor: 'pointer',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      marginLeft: '10px',
+      fontSize: '18px'
     },
   };
 
@@ -272,27 +291,30 @@ function ChatbotSalesforce() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div style={chatbotStyles.chatbot}>
-      <div style={chatbotStyles.chatbox}>
-        <div style={chatbotStyles.messages}>
-          {messages.map((message, index) => (
-            <div key={index} style={chatbotStyles.message}>
-              {message.role === 'bot' ? (
-                <div style={chatbotStyles.botMessage}>{message.text}</div>
-              ) : (
-                <div style={chatbotStyles.userMessage}>{message.text}</div>
-              )}
-            </div>
-          ))}
+    <div style={chatbotStyles.chatArea}>
+      <div style={chatbotStyles.chatbot}>
+        <div style={chatbotStyles.chatbox}>
+          <div style={chatbotStyles.messages}>
+            {messages.map((message, index) => {
+                if (message.role === 'bot') {
+                  return (
+                  <div style={chatbotStyles.botMessage} key={index}>{message.text}</div>
+                )} else {return (
+                  <div style={chatbotStyles.userMessage} key={index}>{message.text}</div>
+                )}}
+            )}
+          </div>
+          <div style={chatbotStyles.container}>
+          <input
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Type a message..."
+            style={chatbotStyles.input}
+          />
+          <button onClick={handleSendMessage} style={chatbotStyles.button}>Send</button>
+          </div>
         </div>
-        <input
-          type="text"
-          value={input}
-          onChange={handleInputChange}
-          placeholder="Type a message..."
-          style={chatbotStyles.input}
-        />
-        <button onClick={handleSendMessage}>Send</button>
       </div>
     </div>
   );

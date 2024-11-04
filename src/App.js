@@ -2,14 +2,22 @@ import React from 'react';
 // import ChatbotOpenAI from './Chatbot';
 import { AuthProvider, useAuth} from './hooks/AuthProvider';
 import ChatbotSalesforce from './ChatbotSalesforce';
-import logo from './logo.svg';
+import nttDataLogo from './NTT_Data-Logo.wine.png'; // Importieren Sie das NTT_Data-Logo
 import './App.css';
+
+const logoStyle = {
+  position: 'absolute',
+  top: '10px',
+  left: '32px',
+  width: '150px'
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>AI Chatbot</h1>
+        <img src={nttDataLogo} alt="NTT Data Logo" style={logoStyle} />
         <AuthProvider>
           <MainApp />
         </AuthProvider>
