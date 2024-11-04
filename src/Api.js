@@ -81,4 +81,4 @@ class Api {
 }
 
 // Export a single instance of the class for app-wide use
-export const api = new Api('https://d8v000002kyn3uak-dev-ed.develop.my.salesforce-scrt.com');
+export const api = new Api('https://ntt-afwt.my.salesforce-scrt.com');

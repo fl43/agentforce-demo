@@ -202,7 +202,7 @@ function ChatbotSalesforce() {
         const cId = await startConversation();
         setConversationId(cId);
 
-        subscribeEvents(baseURI, '00D8V000002KyN3');
+        subscribeEvents(baseURI, '00DKd000004WqBE');
       } catch (error) {
         setError(error.message);
       } finally {
