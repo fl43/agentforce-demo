@@ -1,16 +1,16 @@
 import React from 'react';
 // import ChatbotOpenAI from './Chatbot';
-import { AuthProvider, useAuth} from './hooks/AuthProvider';
+import { AuthProvider, useAuth } from './hooks/AuthProvider';
 import ChatbotSalesforce from './ChatbotSalesforce';
-import nttDataLogo from './NTT_Data-Logo.wine.png'; // Importieren Sie das NTT_Data-Logo
+import nttDataLogo from './NTT_Data-Logo.wine.png';
 import './App.css';
 
 const logoStyle = {
   position: 'absolute',
   top: '10px',
-  left: '32px',
-  width: '150px'
-}
+  left: '40px',
+  width: '200px',
+};
 
 function App() {
   return (
