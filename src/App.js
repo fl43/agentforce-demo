@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>AI Chatbot</h1>
+        <h1>Agentforce</h1>
         <img src={nttDataLogo} alt="NTT Data Logo" style={logoStyle} />
         <AuthProvider>
           <MainApp />
