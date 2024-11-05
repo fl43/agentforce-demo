@@ -25,6 +25,8 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let cancelled = false;
+
         const fetchAccessToken = async () => {
             setLoading(true);
             try {
@@ -33,20 +35,23 @@ export const AuthProvider = ({ children }) => {
                 
                 const response = await api.post('/iamessage/v1/authorization/unauthenticated/accessToken', data);
                 
-                console.log('Access Token: ', response.accessToken);
-                // setToken(response.accessToken);
-                api.setAuthToken(response.accessToken);
-                setAuthenticated(true);
+                if (!cancelled) {
+                    console.log('Access Token: ', response.accessToken);
+                    api.setAuthToken(response.accessToken);
+                    setAuthenticated(true);
+                }
             } catch {
-                // setToken(null);
-                api.setAuthToken(null);
-                setAuthenticated(false);
+                if (!cancelled) {
+                    api.setAuthToken(null);
+                    setAuthenticated(false);
+                }
             } finally {
                 setLoading(false);
             }
         }
 
         fetchAccessToken();
+        return () => { cancelled = true; }
     }, []);
 
     /*
